@@ -1,0 +1,49 @@
+/* Element which hosts whole web component (parallax-object) */
+:host {
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+/* Parallax-wrap covers parallax object and has absolute position so user can position this element whenever he wants */
+:host .parallax-wrap {
+	position: absolute;
+	/* This style binds value of polymer property */
+	top: var(--top-position);
+	left: var(--left-position);
+	bottom: var(--bottom-position);
+	right: var(--right-position);
+}
+
+/* Because object which has to be moved is moved using Top CSS we need to make it relevant to its parent (this element will
+	position of element back to relative instead of absolute in parallax-wrap) */
+:host .parallax-wrap .position-reset {
+	position: relative;
+	display: block;
+}
+
+/* This wrap just cover content of parallax-object and is moved using parallax-object.js */
+:host .parallax-wrap .object-wrap {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+}
+
+polyfill-next-selector { content: ":host .parallax-wrap .object-wrap";}
+:host .parallax-wrap .object-wrap ::content .3dRotate {
+	transform: rotate(var(--starting-rotation));
+	-moz-transform: rotate(var(--starting-rotation));
+	-webkit-transform: rotate(var(--starting-rotation));
+}
+
+polyfill-next-selector { content: ":host .parallax-wrap .object-wrap";}
+:host .parallax-wrap .object-wrap ::content .3dRotate * {
+	perspective: 300px;
+	transform: rotate3d(0,0,0,0);
+	-o-transform: rotate3d(0,0,0,0);
+	-moz-transform: rotate3d(0,0,0,0);
+	-webkit-transform: rotate3d(0,0,0,0);
+}

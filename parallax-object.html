@@ -1,0 +1,92 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<!-- Script which create parallax effect on all elements addded using parallax-object element -->
+<script src="parallax-effect.js"></script>
+
+
+<dom-module id="parallax-object">
+	<!-- Main CSS -->
+	<link rel="import" type="css" href="parallax-object.css">
+
+	<template>
+		<!-- parallax-wrap is absolutly positioned so it can be put whenever user want to (user defines it in element attribute) -->
+		<div class="parallax-wrap">
+			<!-- this element reset position so inner div can be positioned absolutely to this relative div -->
+			<div class="position-reset">
+				<!-- wrap which covers whole content -->
+				<div class="object-wrap">
+					<div class="3dRotate">
+						<content></content>
+					</div>
+				</div>
+			</div>
+		</div>
+	</template>
+
+	<script>
+		// Polymer main function, setting options of element as properties 
+		Polymer({
+			is: 'parallax-object',
+			properties: {
+				absoluteTop: {
+					type: String,
+					value: "0" 
+				},
+				absoluteLeft: {
+					type: String,
+					value: "0"
+				},
+				absoluteBottom: {
+					type: String,
+					value: "0"
+				},
+				absoluteRight: {
+					type: String,
+					value: "0"
+				},
+				speedCoef: {
+					type: String,
+					value: "0"
+				},
+				startingRotation: {
+					type: String,
+					value: "0"
+				},
+				rotationCoef: {
+					type: String,
+					value: "0"
+				},
+				spaceRotation: {
+					type: String,
+					value: "0"
+				},
+				parallaxWidth: {
+					type: String,
+					value: "0"
+				}
+			},
+			attached: function() {
+
+
+				// Applying position on elemenet through CSS
+				if(this.absoluteTop != "0") this.customStyle['--top-position'] = this.absoluteTop;
+				if(this.absoluteLeft != "0") this.customStyle['--left-position'] = this.absoluteLeft;
+				if(this.absoluteBottom != "0") this.customStyle['--bottom-position'] = this.absoluteBottom;
+				if(this.absoluteRight != "0") this.customStyle['--right-position'] = this.absoluteRight;
+				if(this.startingRotation != "0") this.customStyle['--starting-rotation'] = this.startingRotation;
+				this.updateStyles();
+
+				// Call addObject function to add created element to array of parallax elemetns
+				addObject($(this).find('.object-wrap'), this, $(this));
+
+			}
+		});
+	</script>
+</dom-module>
+
+<!--
+
+	Things that are not still done:
+		Create vertical parallax (if there is vertical scroll), vertical
+		parallax (user will set attribute how much it can get to side and through scrolling it will move to sides).
+
+-->
