@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+
+		<meta name="description" content="Antonín Houdek is frontend and backend web developer with finished high school IT education, over 3 years experience in web developing and skills in a lot of web technologies (such as PHP, MySQL, LessCSS, Polymer, WordPress and much more) and also very strong base knowledge of IT area.">
+		
+		<title>Parallax object example</title>
+
+		<link rel="stylesheet" type="text/css" href="global.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+		<!-- Initializating polymer -->
+		<script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+
+		<!-- Link to my elements -->
+		<link rel="import" href="../parallax-object.html">
+	</head>
+	<body>
+		<parallax-object absolute-left="20px" absolute-top="200px" speed-coef="2" starting-rotation="30deg" rotation-coef="2" parallax-width="200px">
+			<p>Here is parallax text</p>
+		</parallax-object>
+		<div>
+			<p>Here is non-parallax text</p>
+		</div>
+	</body>
+</html>
