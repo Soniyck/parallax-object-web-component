@@ -28,5 +28,7 @@ to -300px it will move to left but animation starts while it appear on screen an
 to load all script needed and add all elements to array etc... there is called function after parallax is loaded so you can create that
 function and it will be automatically called after parallax loads function name is parallaxReady().
 
+Too see more about polymer project visit: https://www.polymer-project.org
+
 Thank you for using my web component,
 Sonyck.
